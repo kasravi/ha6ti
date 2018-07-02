@@ -1,0 +1,95 @@
+body {
+	background-color: #1E1720;
+	margin: 0px; 
+}
+canvas {
+	display:block; 
+	z-index: 10;
+	opacity: 0.9;
+	position:absolute;  
+	-ms-touch-action: none;
+		touch-action: none;
+}
+
+/*------------*/
+.center-text {
+	text-align: center;
+}
+
+.center-text2 {
+	text-align: center;
+	bottom: 0px;
+}
+
+.clip-svg {
+	width: 0;
+	height: 0;
+}
+
+.clip-wrap {
+	filter: blur(3px) drop-shadow(0 0 10px #443548);
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+}
+
+.clip-each {
+	width: 80px;
+	height: 80px;
+	position: relative;
+	margin-bottom:20px;
+}
+
+.clip-each2 {
+	width: 40px;
+	height: 40px;
+	position: relative;
+	
+}
+
+.clip-each2.active {
+	background-color: #5F674B;
+}
+
+.clip-each2:last-child {
+	margin-top: 10px;
+}
+
+.clip-each:nth-child(3) {
+	left: -20px;
+}
+
+.clip-each:nth-child(1) {
+	left: 20px;
+}
+
+.clip-each:after {
+	content: "";
+	position: absolute;
+	background: #fff;
+}
+
+.clip-each, .clip-each:after {
+	-webkit-clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+	clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+	clip-path: url("#octagon-clip");
+}
+
+.clip-each.active {
+	background-color: #5F674B;
+}
+
+.box-shadow-inset {	
+	background-color: #443548; /* IE 8 fallback */
+	background-color: #443548; /* rgba(256,256,256,0.35); */
+	-webkit-filter: blur(3px);
+	filter: blur(3px)  drop-shadow(0 0 3px #443548);
+}
+
+.box-shadow-inset:after {	
+	background: #1E1720;
+	top: 4px;
+	left: 4px;
+	right: 4px;
+	bottom: 4px;
+}
