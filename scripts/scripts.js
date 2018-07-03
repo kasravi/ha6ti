@@ -262,10 +262,10 @@ function init() {
 
 function findOct(point,container) {
 	for(oct of container){
-		if(point.clientX < oct.rect.right &&
-		point.clientX > oct.rect.left &&
-		point.clientY > oct.rect.top &&
-		point.clientY < oct.rect.bottom)
+		if(point.clientX < oct.rect.right+10 &&
+		point.clientX > oct.rect.left-10 &&
+		point.clientY > oct.rect.top-10 &&
+		point.clientY < oct.rect.bottom+10)
 		return oct;
 	}
 }
