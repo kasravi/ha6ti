@@ -33,6 +33,13 @@ canvas {
 	padding: 10px;
 }
 
+.clip-wrap2 {
+	filter: blur(3px) drop-shadow(0 0 10px #443548);
+	display: inline-block;
+	vertical-align: top;
+	padding: 5px;
+}
+
 .clip-each {
 	width: 80px;
 	height: 80px;
@@ -41,9 +48,10 @@ canvas {
 }
 
 .clip-each2 {
-	width: 40px;
-	height: 40px;
+	width: 70px;
+	height: 70px;
 	position: relative;
+	margin-bottom:10px;
 	
 }
 
@@ -51,8 +59,12 @@ canvas {
 	background-color: #5F674B;
 }
 
-.clip-each2:last-child {
+.clip-wrap2:nth-child(1) {
 	margin-top: 10px;
+}
+
+.clip-wrap2:nth-child(3) {
+	margin-top: -10px;
 }
 
 .clip-each:nth-child(3) {
@@ -69,7 +81,7 @@ canvas {
 	background: #fff;
 }
 
-.clip-each, .clip-each:after {
+.clip-each, .clip-each2, .clip-each:after {
 	-webkit-clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
 	clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
 	clip-path: url("#octagon-clip");

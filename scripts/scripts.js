@@ -1,7 +1,7 @@
 var canvas,
 	c,
 	devicePixelRatio,
-	container, debounce = 100, mayeNum=0, gusheNum=0,
+	container, debounce = 0.2, mayeNum=0, gusheNum=0,
 	sound=[],isPlaying=[],gain=[],octs=[],ctrls=[];
 var maye={};
 var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -14,7 +14,7 @@ function play(i, m, v) {
 
 var f = parseFloat(Math.pow(2,(m-69)/12)*440);
 
-if(ctrls[4].active && i>9) {return}
+if(ctrls[3].active && i>9) {return}
 	if(sound[i] && !isPlaying[i]) {
 		var offset = (i>9?Math.random()/20:0);
 		
@@ -143,7 +143,7 @@ function positionHandler(e) {
 							o.el.className = o.active ? o.el.className.replace("inactive", "active"):
 										o.el.className.replace("active", "inactive");
 						} else {
-							for(var n= 0; n<5; n++){
+							for(var n= 0; n<4; n++){
 								ctrls[n].ready = false;
 							}
 
@@ -247,7 +247,7 @@ function init() {
 
 	var d = new Date()
 			
-	for(var n= 1; n<6; n++){
+	for(var n= 1; n<5; n++){
 		ctrls.push({
 			ctrl:n,
 			time: d.getTime(),
@@ -262,10 +262,10 @@ function init() {
 
 function findOct(point,container) {
 	for(oct of container){
-		if(point.clientX < oct.rect.right+10 &&
-		point.clientX > oct.rect.left-10 &&
-		point.clientY > oct.rect.top-10 &&
-		point.clientY < oct.rect.bottom+10)
+		if(point.clientX < oct.rect.right &&
+		point.clientX > oct.rect.left &&
+		point.clientY > oct.rect.top &&
+		point.clientY < oct.rect.bottom)
 		return oct;
 	}
 }
