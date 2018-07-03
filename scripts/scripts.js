@@ -40,11 +40,17 @@ function initsound(){
 	var real = new Float32Array([0,0.7,0.1,0.05,0.3]);
 	var imag = new Float32Array(real.length);
 	var hornTable = audioCtx.createPeriodicWave(real, imag);
+	var compressor = audioCtx.createDynamicsCompressor();
+	compressor.threshold.setValueAtTime(-50, audioCtx.currentTime);
+	compressor.knee.setValueAtTime(40, audioCtx.currentTime);
+	compressor.ratio.setValueAtTime(12, audioCtx.currentTime);
+	compressor.attack.setValueAtTime(0, audioCtx.currentTime);
+	compressor.release.setValueAtTime(0.25, audioCtx.currentTime);
 	for(let i = 0 ; i< 13; i++) {
 		sound[i] = audioCtx.createOscillator();
 		gain[i] = audioCtx.createGain();
 		gain[i].gain.value = 0; 
-		gain[i].connect(audioCtx.destination);
+		gain[i].connect(compressor);
 		sound[i].connect(gain[i]);
 		//sound[i].type = 'sine';
 		sound[i].setPeriodicWave(hornTable);
@@ -52,7 +58,9 @@ function initsound(){
 		
 		isPlaying[i]=false;
 	}
+	compressor.connect(audioCtx.destination);
 	
+		
 }
 
 function draw() {
